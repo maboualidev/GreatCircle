@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: GreatCircle.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: GreatCircle.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Created by mabouali on 5/19/2017.
  */
 
@@ -24,20 +52,20 @@ Math.sign = Math.sign || function(x) {
  * @param {number} [inverseFlattening=298.257223563] This is inverse flattening (1/f) as defined for ellipsoids.
  * It defines the deviation of the Earth shape from a perfect sphere. The default value is based on WGS84. Some
  * function use this value.
- * @author Mohammad Abouali <maboualidev@gmail.com>
+ * @author Mohammad Abouali &lt;maboualidev@gmail.com>
  * @version 0.0.2
  * @class GreatCircle
  * @constructor
  */
 function GreatCircle(EarthRadius, unit, inverseFlattening) {
-    if (typeof(EarthRadius)==="number" &&
-        !isNaN(EarthRadius) &&
+    if (typeof(EarthRadius)==="number" &amp;&amp;
+        !isNaN(EarthRadius) &amp;&amp;
         EarthRadius > 0 )
         this._EarthRadius = EarthRadius;
     if (typeof(unit)==="string")
         this._unit = unit;
-    if (typeof(inverseFlattening)==='number' &&
-        !isNaN(inverseFlattening) &&
+    if (typeof(inverseFlattening)==='number' &amp;&amp;
+        !isNaN(inverseFlattening) &amp;&amp;
         inverseFlattening>=1) {
         this._inverseFlattening = inverseFlattening;
     }
@@ -47,7 +75,7 @@ function GreatCircle(EarthRadius, unit, inverseFlattening) {
         set: function(newEarthRadius) {
             if (typeof(newEarthRadius)!=="number" ||
                 isNaN(newEarthRadius) ||
-                newEarthRadius<=0)
+                newEarthRadius&lt;=0)
                 throw new TypeError('GreatCircle: [EarthRadius set property] EarthRadius must be a non-NaN positive number');
             this._EarthRadius = newEarthRadius;
         }
@@ -65,7 +93,7 @@ function GreatCircle(EarthRadius, unit, inverseFlattening) {
         set: function(newInverseFlattening) {
             if (typeof(newInverseFlattening)!=="number" ||
                 isNaN(newInverseFlattening) ||
-                newInverseFlattening<1)
+                newInverseFlattening&lt;1)
                 throw new TypeError('GreatCircle: [inverseFlattening set property] inverseFlattenning must be a number greater than or equal to 1.');
             this._inverseFlattening = newInverseFlattening;
         }
@@ -76,7 +104,7 @@ function GreatCircle(EarthRadius, unit, inverseFlattening) {
         set: function(newF) {
             if (typeof(newF)!=="number" ||
                 isNaN(newF) ||
-                newF<0 || newF>1)
+                newF&lt;0 || newF>1)
                 throw new TypeError('GreatCircle: [f set property] f must be a number between 0 and 1');
             this._inverseFlattening = 1.0/newF;
         }
@@ -157,7 +185,7 @@ GreatCircle.prototype.DMS2DecimalDeg = function (Deg,Min,Sec, reminder) {
         throw new TypeError('GreatCircle: DMS2DecimalDeg: Only numeric non-NaN values are accepted.');
     var DegSign = Math.sign(Deg);
     var decimalDegPositive = DegSign*Deg + Min/60 + Sec/3600;
-    if ((typeof reminder)!== 'undefined' && !Number.isNaN(reminder)) {
+    if ((typeof reminder)!== 'undefined' &amp;&amp; !Number.isNaN(reminder)) {
         decimalDegPositive += reminder;
     }
     return ( (Math.sign(Deg)>=0)?decimalDegPositive:-decimalDegPositive);
@@ -286,7 +314,7 @@ GreatCircle.prototype.geoDistance = function (sLat,sLon,eLat,eLon,eps,maxIterati
     var GeoDistance = 0;
     var oldGeoDistance = 2*eps;
     var counter = 0;
-    while ( (Math.abs(GeoDistance-oldGeoDistance)>eps) && (counter<maxIterations) ){
+    while ( (Math.abs(GeoDistance-oldGeoDistance)>eps) &amp;&amp; (counter&lt;maxIterations) ){
         oldGeoDistance = GeoDistance;
         //console.log('Before')
         //console.log({sinDelta,cosDelta,delta,sinAlpha,cos2Alpha,cosDeltam,C,Lambda,counter})
@@ -346,7 +374,7 @@ GreatCircle.prototype.intermediatePoint = function (sLat,sLon,eLat,eLon,fraction
         isInDegree = true;
 
     // Checking f \in [0,1]
-    if (fraction<0 || fraction>1) {
+    if (fraction&lt;0 || fraction>1) {
         var ErrMSG = 'GreatCircle: f must be between zero and one.';
         console.error(ErrMSG);
         throw new Error(ErrMSG);
@@ -398,14 +426,14 @@ GreatCircle.prototype.intermediatePoint = function (sLat,sLon,eLat,eLon,fraction
  */
 GreatCircle.prototype.intermediatePoints = function (sLat,sLon,eLat,eLon,nPoints,isInDegree) {
     nPoints = nPoints || 1;
-    if (nPoints<1) {
+    if (nPoints&lt;1) {
         var ErrMSG='GreatCircle: nPoints must be greater than or equal to 1.';
         console.error(ErrMSG);
         throw new Error(ErrMSG);
     }
     var f;
     var points=[{lat: sLat, lon: sLon}];
-    for (var idx=1; idx<=nPoints;idx++) {
+    for (var idx=1; idx&lt;=nPoints;idx++) {
         f = idx/(nPoints+1);
         points[idx]=this.intermediatePoint(sLat,sLon,eLat,eLon,f,isInDegree);
     }
@@ -445,7 +473,7 @@ GreatCircle.prototype.getProjectileLine = function (sLat,sLon,eLat,eLon,maxHeigh
     var totalDistance = this.distance(sLat,sLon,eLat,eLon,'shortform', false, isInDegree);
     maxHeight = maxHeight || (0.5*totalDistance);
 
-    if (maxHeight<0) {
+    if (maxHeight&lt;0) {
         ErrMSG = 'greatCircle: maxHeight must be positive.';
         console.error(ErrMSG);
         throw new Error(ErrMSG);
@@ -467,7 +495,7 @@ GreatCircle.prototype.getProjectileLine = function (sLat,sLon,eLat,eLon,maxHeigh
         case 'parabola':
             // Using H = -maxHeight*(d-0.5)*(d+0.5); where d \in [-0.5,0.5]
             points[0].height=0;
-            for (var idx=1; idx<=nPoints; idx++) {
+            for (var idx=1; idx&lt;=nPoints; idx++) {
                 var d = idx/(nPoints+1)-0.5;
                 points[idx].height = -maxHeight*(d-0.5)*(d+0.5);
             }
@@ -475,7 +503,7 @@ GreatCircle.prototype.getProjectileLine = function (sLat,sLon,eLat,eLon,maxHeigh
 
             break;
         case 'constant':
-            for (idx=0;idx<points.length;idx++) {
+            for (idx=0;idx&lt;points.length;idx++) {
                 points[idx].height = maxHeight;
             }
             break;
@@ -485,4 +513,26 @@ GreatCircle.prototype.getProjectileLine = function (sLat,sLon,eLat,eLon,maxHeigh
             throw new Error(ErrMSG);
     }
     return points;
-};
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GreatCircle.html">GreatCircle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#decimalDeg2DMS">decimalDeg2DMS</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#DMS2DecimalDeg">DMS2DecimalDeg</a></li><li><a href="global.html#geoDistance">geoDistance</a></li><li><a href="global.html#getProjectileLine">getProjectileLine</a></li><li><a href="global.html#intermediatePoint">intermediatePoint</a></li><li><a href="global.html#intermediatePoints">intermediatePoints</a></li><li><a href="global.html#rad2deg">rad2deg</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jul 14 2017 15:40:06 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

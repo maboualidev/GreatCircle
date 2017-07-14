@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: GreatCircle</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: GreatCircle</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>GreatCircle</h2>
+        
+            <div class="class-description">GreatCircle</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="GreatCircle"><span class="type-signature"></span>new GreatCircle<span class="signature">(EarthRadius<span class="signature-attributes">opt</span>, unit<span class="signature-attributes">opt</span>, inverseFlattening<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This is the constructor to Great Circle Module. This constructor provides routines to calculate pointsalong great circle.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>EarthRadius</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    6378137.0
+                
+                </td>
+            
+
+            <td class="description last">Determines EarthRadius. Despite called EarthRadius, this can beused to simulate any size sphere. The default Earth Radius is based on the WGS84.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>unit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    meter
+                
+                </td>
+            
+
+            <td class="description last">The unit of the EarthRadius. All distances if not provided in Radians areconsidered to be the same unit as that of the EarthRadius. Note that there is no check on whether theEarthRadius and the provided unit are actually matching.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inverseFlattening</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    298.257223563
+                
+                </td>
+            
+
+            <td class="description last">This is inverse flattening (1/f) as defined for ellipsoids.It defines the deviation of the Earth shape from a perfect sphere. The default value is based on WGS84. Somefunction use this value.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>0.0.2</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:maboualidev@gmail.com">Mohammad Abouali</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="GreatCircle.js.html">GreatCircle.js</a>, <a href="GreatCircle.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GreatCircle.html">GreatCircle</a></li></ul><h3>Global</h3><ul><li><a href="global.html#decimalDeg2DMS">decimalDeg2DMS</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#DMS2DecimalDeg">DMS2DecimalDeg</a></li><li><a href="global.html#geoDistance">geoDistance</a></li><li><a href="global.html#getProjectileLine">getProjectileLine</a></li><li><a href="global.html#intermediatePoint">intermediatePoint</a></li><li><a href="global.html#intermediatePoints">intermediatePoints</a></li><li><a href="global.html#rad2deg">rad2deg</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jul 14 2017 15:40:06 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
